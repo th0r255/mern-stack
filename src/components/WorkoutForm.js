@@ -1,6 +1,10 @@
 import { useState } from 'react'
+import { useWorkoutsContext } from '../hooks/useWorkoutsContext'
 
 const WorkoutForm = () => {
+// this is the reducer function
+  const { dispatch } = useWorkoutsContext()
+
   const [title, setTitle ] = useState('')
   const [load, setLoad ] = useState('')
   const [reps, setReps ] = useState('')
@@ -29,7 +33,7 @@ const WorkoutForm = () => {
       setLoad('')
       setReps('')
       setError(null)
-      console.log('new workout added')
+      dispatch({type: 'CREATE_WORKOUT', payload: json})
     }
   }
 
